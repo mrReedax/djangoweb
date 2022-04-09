@@ -1,2 +1,29 @@
-<h3>Hola username</h3>
-<a href="{%url 'index' %}"><input type="submit" value="Cerrar sesión"></a>
+<head>
+    Bienvenido {{ account.username }}
+    <a href="{%url 'tasks:index' %}"><input type="submit" value="Cerrar sesión"></a>
+</head>
+<h1>Tu Agenda</h1>
+<div>
+    <table>
+        <tr>
+            <th>Actividad</th>
+            <th>Completada</th>
+        </tr>
+        {% for task in account.task_set.all %}
+        <tr>
+            <td>{{task.task_text}}</td>
+            <form action="">
+                <td>
+                    <input 
+                        type="checkbox" 
+                        id="completed" 
+                        {% if task.completed %} checked {% endif %} 
+                        onChange="submit();">
+                </td>
+            </form>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
