@@ -12,6 +12,7 @@ class Account(models.Model):
         return self.username
 
 class Task(models.Model):
+    account_id = models.ForeignKey(Account, on_delete=models.CASCADE)
     task_text = models.CharField(max_length=255)
     completed = models.BooleanField(default=False)
 
