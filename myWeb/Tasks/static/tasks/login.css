@@ -1,0 +1,68 @@
+body {
+    display: flex;
+    background: linear-gradient(180deg, #262335, 80%,#000000);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 2vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5%;
+    width: 38vw;
+    border: none;
+    background-color: rgba(255, 255, 255, 255);
+
+}
+
+/* formularion dentro del contenedor */
+.form-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    display: flex;
+    padding: 2vw 5vw;
+}
+
+.login-data {
+    display: flex;
+    flex-direction: column;
+    color: rgba(0, 0, 0,255);
+
+}
+
+/*labels Usuario, contraseña y sus inputs */
+.login-input-label {
+    padding: .2vw;
+    margin: .2vw;
+}
+
+/* Cajas de texto para usuario y contraseña*/
+.box-input{
+    width: 20vw;
+    height: 2.5vw;
+}
+
+.error-message {
+    color: red;
+}
+
+.button {
+    color: white;
+    padding: 0.3vw 2vw;
+    background-color: #059862;
+    border: .1vw solid #cccccc;
+    border-radius: 0.5vw;
+    font-size: 1em;
+}
+.button:hover{
+    color: #059862;
+    background-color: white;
+}

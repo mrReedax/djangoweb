@@ -13,18 +13,32 @@ def index(request, error_message=''):
 def registration(request):
     return render(request, 'registration/registration.html')
 
+def home(request, account):
+    return render(request, 'tasks/home.html', {\
+        'account':account
+        })
+
 def login(request):
-    user      = request.POST['user']
-    password  = request.POST['password']
-    try:
-        savedPassword   = Account.objects.get(username=user).password
-        account         = Account.objects.get(username=user)
-    except Account.DoesNotExist:
-        return HttpResponseRedirect(reverse("tasks:loginerror", args=('Usuario no encontrado',)))
-    else:
-        if check_password(password, savedPassword):
-            return render(request, 'tasks/home.html', {
-                'account':account
-            })
+    if request.method == 'POST':
+        user      = request.POST['user']
+        password  = request.POST['password']
+        try:
+            savedPassword   = Account.objects.get(username=user).password
+            account         = Account.objects.get(username=user)
+        except Account.DoesNotExist:
+            return HttpResponseRedirect(reverse("tasks:loginerror", args=('*Usuario no encontrado',)))
         else:
-            return HttpResponseRedirect(reverse("tasks:loginerror", args=('Contraseña incorrecta',)))
+            if check_password(password, savedPassword):
+                return home(request, account)
+            else:
+                return HttpResponseRedirect(reverse("tasks:loginerror", args=('*Contraseña incorrecta',)))
+    else:
+        return HttpResponseRedirect(reverse("tasks:index"))
+
+def changeState(request, user_id):
+    if request.method == 'POST':
+        account = Account.objects.get(pk=user_id)
+        task    = account.task_set.get(pk=request.POST['task_id'])
+        task.changeTaskCompletionState()
+        task.save()
+        return home(request, account)

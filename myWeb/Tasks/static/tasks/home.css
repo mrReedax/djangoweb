@@ -1,0 +1,55 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #059862, 30%,#262335);
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 3vw;
+    padding: 2.5vw;
+}
+
+body {
+    justify-content: center;
+    background-color: white;
+    color: black;
+}
+
+.agenda-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logout-btn {
+    color: white;
+    padding: 0.3vw 2vw;
+    background-color: #059862;
+    border: .1vw solid #cccccc;
+    border-radius: 0.5vw;
+    font-size: 0.4em;
+}
+.logout-btn:hover{
+    color: #059862;
+    background-color: white;
+}
+
+.button {
+    width: 8vw;
+}
+
+.button:hover{
+    background-color: yellow;
+    color: black;
+}
+
+.done {
+    background-color: #059862;
+    color: white;
+}
+
+
+.pending {
+    background-color: red;
+    color: white;
+}

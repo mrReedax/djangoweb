@@ -1,26 +1,45 @@
-<form action="{%url 'tasks:login' %}" method="post">
-    {% csrf_token %}
-    <label for="username">Usuario</label>
-    <input
-        type="text"
-        name="user"
-        id="username"
-     >
-    <label for="password">Contraseña</label>
-    <input
-        type="password"
-        name="password"
-        id="password"
-    >
-    <input type="submit" value="Iniciar Sesión">
-    {% if error_message %}
-        <p>{{ error_message }}</p>
-    {% endif %}
-
-</form>
-<a href="{%url 'tasks:registration' %}">
-    <input 
-        type="submit"
-        value="Registrarse"
-    >
-</a>
+{% include 'tasks/head.html' with title='TasksApp'%}
+{%load static%}
+<link rel="stylesheet" type="text/css" href="{% static '/tasks/login.css' %}">
+<div class="main-login-container">
+    <form class="form-login" action="{%url 'tasks:login' %}" method="post">
+        {% csrf_token %}
+        {% if error_message %}
+            <p class="error-message">{{ error_message }}</p>
+        {% endif %}
+        <div class="login-container">
+            <div class="login-data">
+                <label class="login-input-label" for="username">Usuario</label>
+                <label class="login-input-label" for="password">Contraseña</label>
+            </div>
+            <div class="login-data">
+                <input
+                    class="login-input-label box-input" 
+                    type="text"
+                    name="user"
+                    id="username"
+                 >            
+                <input
+                    class="login-input-label box-input"
+                    type="password"
+                    name="password"
+                    id="password"
+                >
+            </div>
+        </div>
+        <div>
+            <input 
+                class="button" 
+                type="submit" 
+                value="Iniciar Sesión"
+            >
+            <a href="{%url 'tasks:registration' %}">
+                <input 
+                    class="button"
+                    type="submit"
+                    value="Registrarse"
+                >
+            </a>
+        </div>
+    </form>
+</div>

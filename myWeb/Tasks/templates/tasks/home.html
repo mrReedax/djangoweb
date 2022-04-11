@@ -1,29 +1,44 @@
-<head>
+{% include 'tasks/head.html' with title='Home'%}
+{%load static%}
+<link rel="stylesheet" type="text/css" href="{% static '/tasks/home.css' %}">
+<header>
     Bienvenido {{ account.username }}
-    <a href="{%url 'tasks:index' %}"><input type="submit" value="Cerrar sesión"></a>
-</head>
-<h1>Tu Agenda</h1>
-<div>
-    <table>
-        <tr>
-            <th>Actividad</th>
-            <th>Completada</th>
-        </tr>
-        {% for task in account.task_set.all %}
-        <tr>
-            <td>{{task.task_text}}</td>
-            <form action="">
-                <td>
-                    <input 
-                        type="checkbox" 
-                        id="completed" 
-                        {% if task.completed %} checked {% endif %} 
-                        onChange="submit();">
-                </td>
-            </form>
-        </tr>
-        {% endfor %}
-    </table>
+    <a href="{%url 'tasks:index' %}">
+        <input 
+            class="logout-btn"
+            type="submit" 
+            value="Cerrar sesión"></a>
+</header>
+
+<div class="agenda-container">
+    <h1>Tu Agenda</h1>
+    <div>
+        <table>
+            <tr>
+                <th>Actividad</th>
+                <th>Completada</th>
+            </tr>
+            {% for task in account.task_set.all %}
+                <tr>
+                    <td>{{task.task_text}}</td>
+                    <td>
+                        <form action="{%url 'tasks:changeState' account.id %}" method="post">
+                            {% csrf_token %}
+                            <input 
+                                type="hidden" 
+                                name="task_id" 
+                                value="{{task.id}}">
+                            <input 
+                                class="button {% if task.completed %} done {% else %} pending {% endif %}"
+                                type="submit" 
+                                value="{% if task.completed %} Hecho {% else %} Pendiente {% endif %}"
+                            >
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 </div>
 
 

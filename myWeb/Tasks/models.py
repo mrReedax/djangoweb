@@ -18,3 +18,6 @@ class Task(models.Model):
 
     def __str__(self):
         return self.task_text
+
+    def changeTaskCompletionState(self):
+        self.completed = not self.completed
