@@ -3,11 +3,14 @@
 <link rel="stylesheet" type="text/css" href="{% static '/tasks/home.css' %}">
 <header>
     Bienvenido {{ account.username }}
-    <a href="{%url 'tasks:index' %}">
-        <input 
-            class="logout-btn"
-            type="submit" 
-            value="Cerrar sesión"></a>
+    <nav class="navbar">
+        <a 
+            class="nav-button"
+            href="{%url 'tasks:index' %}">Historial</a>
+        <a 
+            class="nav-button"
+            href="{%url 'tasks:index' %}">Cerrar sesión</a>
+    </nav>
 </header>
 
 <div class="agenda-container">
@@ -16,26 +19,35 @@
         <table>
             <tr>
                 <th>Actividad</th>
-                <th>Completada</th>
+                <th>Opciones</th>
             </tr>
             {% for task in account.task_set.all %}
-                <tr>
-                    <td>{{task.task_text}}</td>
-                    <td>
+                {% if not task.completed %}
+                <tr class="table-row">
+                    <td class="task-text">{{task.task_text}}</td>
+                    <td class="task-options">
                         <form action="{%url 'tasks:changeState' account.id %}" method="post">
                             {% csrf_token %}
-                            <input 
-                                type="hidden" 
-                                name="task_id" 
+                            <input
+                                type="hidden"
+                                name="task_id"
                                 value="{{task.id}}">
-                            <input 
-                                class="button {% if task.completed %} done {% else %} pending {% endif %}"
-                                type="submit" 
-                                value="{% if task.completed %} Hecho {% else %} Pendiente {% endif %}"
-                            >
+                            <div class="task-options">
+                                <input
+                                    class="button end-task"
+                                    name="endTask"
+                                    type="submit"
+                                    value="✔️">
+                                <input
+                                    class="button delete-task"
+                                    name="deleteTask"
+                                    type="submit"
+                                    value="➖">
+                            </div>
                         </form>
                     </td>
                 </tr>
+                {% endif %}
             {% endfor %}
         </table>
     </div>

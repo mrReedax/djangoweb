@@ -7,12 +7,21 @@ header {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 3vw;
     padding: 2.5vw;
+    border-radius: 0.5vw;
 }
 
 body {
+    font-family: 'Source Sans Pro', sans-serif;
     justify-content: center;
-    background-color: white;
+    background: linear-gradient(180deg, white, 80%,#059862);
     color: black;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    border: .2vw solid #cccccc;
+    border-radius: 0.5vw;
 }
 
 .agenda-container {
@@ -21,35 +30,51 @@ body {
     align-items: center;
 }
 
-.logout-btn {
+.nav-button {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
     color: white;
     padding: 0.3vw 2vw;
     background-color: #059862;
-    border: .1vw solid #cccccc;
-    border-radius: 0.5vw;
     font-size: 0.4em;
+    width: 10vw;
 }
-.logout-btn:hover{
+
+.nav-button:hover{
     color: #059862;
     background-color: white;
 }
 
+table {
+    border: 0.5vw;
+    border-radius: 1vw;
+    color: white;
+    width: 45vw;
+    background-color: rgb(0, 166, 127);
+    margin: 0.5vw;
+    padding: 1vw 0.5;
+}
+
+.table-row {
+    border-radius: 10vw;
+}
+
+.task-text {
+    text-align: center;
+}
+
+.task-options {
+    display: flex;
+    justify-content: center;
+}
+
 .button {
-    width: 8vw;
+    border-radius: 0.5vw;
 }
 
 .button:hover{
-    background-color: yellow;
+    background-color: white;
     color: black;
-}
-
-.done {
-    background-color: #059862;
-    color: white;
-}
-
-
-.pending {
-    background-color: red;
-    color: white;
+    border: 0.1vw solid black;
 }
