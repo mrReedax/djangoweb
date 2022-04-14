@@ -17,7 +17,8 @@ class Task(models.Model):
     completed = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.task_text
+        return f'{self.id} {self.task_text}'
 
     def changeTaskCompletionState(self):
-        self.completed = not self.completed
+        if not self.completed:
+            self.completed = not self.completed

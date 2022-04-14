@@ -13,12 +13,7 @@ def index(request, error_message=''):
 def registration(request):
     return render(request, 'registration/registration.html')
 
-def home(request, account):
-    return render(request, 'tasks/home.html', {\
-        'account':account
-        })
-
-def login(request):
+def home(request):
     if request.method == 'POST':
         user      = request.POST['user']
         password  = request.POST['password']
@@ -26,19 +21,39 @@ def login(request):
             savedPassword   = Account.objects.get(username=user).password
             account         = Account.objects.get(username=user)
         except Account.DoesNotExist:
-            return HttpResponseRedirect(reverse("tasks:loginerror", args=('*Usuario no encontrado',)))
+            return index(request,'*Usuario no encontrado')
         else:
             if check_password(password, savedPassword):
-                return home(request, account)
+                return render(request, 'tasks/home.html', {
+                            'account':account
+                        })
             else:
-                return HttpResponseRedirect(reverse("tasks:loginerror", args=('*Contraseña incorrecta',)))
+                return index(request,'*Contraseña incorrecta')
     else:
         return HttpResponseRedirect(reverse("tasks:index"))
 
-def changeState(request, user_id):
+def modifyTask(request, user_id):
     if request.method == 'POST':
-        account = Account.objects.get(pk=user_id)
-        task    = account.task_set.get(pk=request.POST['task_id'])
-        task.changeTaskCompletionState()
-        task.save()
-        return home(request, account)
+        try:
+            print(request.POST)
+            account = Account.objects.get(pk=user_id)
+            if "newTask" in request.POST.keys():
+                #account.task_set.get(task_text=request.POST["newTask"])
+                account.task_set.create(task_text=request.POST['newTask'])
+            else:
+                task    = account.task_set.get(pk=request.POST['task_id'])
+                if "completeTask" in request.POST.keys():
+                    task.changeTaskCompletionState()
+                    task.save()
+                elif "deleteTask" in request.POST.keys():
+                    print(f"Task {task} deleted")
+                    task.delete()
+        except Exception as e:
+            print(f'Error {e}')
+        finally:
+            return render(request, 'tasks/home.html', {
+                        'account':account
+                    })
+
+def records(request):
+    return render(request, 'tasks/records.html')
