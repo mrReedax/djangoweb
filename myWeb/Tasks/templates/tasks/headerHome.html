@@ -1,0 +1,17 @@
+{% include 'tasks/head.html' with title='Home'%}
+{%load static%}
+<link rel="stylesheet" type="text/css" href="{% static '/tasks/headerHome.css' %}">
+<header>
+    Bienvenido {{ account.username }}
+    <nav class="navbar">
+        <a
+            class="nav-button"
+            href="{%url 'tasks:home' %}">Inicio</a>
+        <a
+            class="nav-button"
+            href="{%url 'tasks:records' %}">Historial</a>
+        <a
+            class="nav-button"
+            href="{%url 'tasks:index' %}">Cerrar sesión</a>
+    </nav>
+</header>

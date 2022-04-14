@@ -1,0 +1,57 @@
+
+{%load static%}
+<link rel="stylesheet" type="text/css" href="{% static '/tasks/taskstable.css' %}">
+<div class="agenda-container">
+    <h1>Tareas</h1>
+    <div>
+        <form
+            class="formAddTask"
+            action="{%url 'tasks:modifyTask' account.id %}"
+            method="post">
+            {% csrf_token %}
+            <input
+                class="newTaskBox"
+                type="text"
+                placeholder="Nueva tarea"
+                name="newTask">
+            <input
+                class="button"
+                type="submit"
+                value="➕">
+        </form>
+        <table>
+            <tr>
+                <th>Actividad</th>
+                <th>Opciones</th>
+            </tr>
+            {% for task in account.task_set.all %}
+                {% if not task.completed %}
+                <tr class="table-row">
+                    <td class="task-text">{{task.task_text}}</td>
+                    <td class="task-options">
+                        <form action="{%url 'tasks:modifyTask' account.id %}" method="post">
+                            {% csrf_token %}
+                            <input
+                                type="hidden"
+                                name="task_id"
+                                value="{{task.id}}">
+                            <div class="task-options">
+                                <input
+                                    class="button end-task"
+                                    name="completeTask"
+                                    type="submit"
+                                    value="✔️">
+                                <input
+                                    class="button delete-task"
+                                    name="deleteTask"
+                                    type="submit"
+                                    value="➖">
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+</div>
