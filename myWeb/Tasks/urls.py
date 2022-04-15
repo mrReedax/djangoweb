@@ -7,6 +7,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('registration/', views.registration, name='registration'),
     path('home', views.home, name='home'),
-    path('home/<int:user_id>/modifyTask', views.modifyTask, name='modifyTask'),
+    path('home/modifyTask', views.modifyTask, name='modifyTask'),
     path('records', views.records, name='records'),
     ]

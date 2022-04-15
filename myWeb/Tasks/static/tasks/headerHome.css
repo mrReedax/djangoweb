@@ -10,14 +10,19 @@ header {
     border-radius: 0.5vw;
 }
 
+form {
+    margin: 0;
+}
+
 .navbar {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     border: .2vw solid #cccccc;
     border-radius: 0.5vw;
 }
 
 .nav-button {
+    border: none;
     display: flex;
     justify-content: center;
     text-decoration: none;
@@ -25,10 +30,10 @@ header {
     padding: 0.3vw 2vw;
     background-color: #059862;
     font-size: 0.4em;
-    width: 10vw;
 }
 
 .nav-button:hover{
     color: #059862;
     background-color: white;
 }
+

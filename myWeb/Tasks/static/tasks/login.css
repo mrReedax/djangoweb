@@ -1,3 +1,9 @@
+html {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 body {
     display: flex;
     background: linear-gradient(180deg, #262335, 80%,#000000);
