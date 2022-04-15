@@ -34,7 +34,7 @@ def home(request, *args, **kwargs):
                     except Exception as e:
                         print(e)
                         print(f'Attempting to generate sid for user {account}')
-                        return index(request,'No se ha podido iniciar sesion, intenta nuevamente')
+                        return index(request,'No se ha podido iniciar sesion')
                     response = render(request, 'tasks/home.html', {
                                 'tasks':tasks,
                                 'user': user
