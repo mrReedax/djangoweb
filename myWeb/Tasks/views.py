@@ -82,11 +82,7 @@ def home(request, *args, **kwargs):
                     else:
                         return index(request,'*Contraseña incorrecta')
             else:
-               return render(request, 'registration/login.html', {
-                            'error_message': '*Inicia sesion para continuar'
-                            })
-
-
+               return render(request, 'registration/login.html')
 
 def modifyTask(request):
     if request.method == 'POST':
@@ -94,9 +90,10 @@ def modifyTask(request):
             session = Session.objects.get(pk=request.COOKIES['sid'])
             account = session.account_id
             if "newTask" in request.POST.keys():
-                # TODO: validar si la tarea existe antes de agregarla
-                #account.task_set.get(task_text=request.POST["newTask"])
-                account.task_set.create(task_text=request.POST['newTask'])
+                new_task = request.POST['newTask']
+                duplicates_found = account.task_set.filter(task_text=new_task).count()
+                if duplicates_found == 0:
+                    account.task_set.create(task_text=new_task)
             else:
                 task    = account.task_set.get(pk=request.POST['task_id'])
                 if "completeTask" in request.POST.keys():
@@ -122,3 +119,14 @@ def records(request):
                     })
     else:
         return index(request,'Inicia sesion para continuar')
+
+def logout(request):
+    if 'sid' in request.COOKIES.keys():
+        try:
+            session = Session.objects.get(pk=request.COOKIES['sid'])
+            session.delete()
+            return HttpResponseRedirect(reverse('tasks:index'))
+        except Session.DoesNotExist:
+            return HttpResponseRedirect(reverse('tasks:index'))
+    else:
+        return HttpResponseRedirect(reverse('tasks:index'))
