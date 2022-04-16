@@ -1,3 +1,11 @@
 {% include 'tasks/head.html' with title="Registro"%}
-<h1>registration page</h1>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'tasks/registration.css' %}">
+<h1>Registro</h1>
+<form action="">
+    <input type="text" id="user" placeholder="Usuario">
+    <input type="password" id="password" placeholder="Contraseña">
+    <input type="password" id="passwordrep" placeholder="Repetir contraseña">
+    <input type="submit" value="Finalizar registro">
+</form>
 {% include 'tasks/footer.html' %}

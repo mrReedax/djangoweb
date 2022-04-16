@@ -1,0 +1,7 @@
+body {
+    background: linear-gradient(180deg, #262335, 60%,#000000);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 2vw;
+    align-items: center;
+    justify-content: center;
+}
