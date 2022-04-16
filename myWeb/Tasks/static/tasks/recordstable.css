@@ -6,17 +6,33 @@
 }
 
 table {
-    border: 0.5vw;
-    border-radius: 1vw;
+    border: 0.2vw;
     color: white;
     width: 45vw;
     background-color: rgb(0, 166, 127);
-    margin: 0.5vw;
+    margin: 0;
     padding: 1vw 0.5;
+}
+.table-title{
+    background-color: rgb(23, 51, 43);
+    border-top-left-radius: 0.5vw;
+    border-top-right-radius: 0.5vw;
 }
 
 .table-row {
     border-radius: 10vw;
+
+}
+
+.records-list{
+    height: 22vw;
+    overflow-y: overlay;
+    border-bottom-left-radius: 0.5vw;
+    border-bottom-right-radius: 0.5vw;
+}
+
+.date-cell {
+    width: 15vw;
 }
 
 th {

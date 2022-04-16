@@ -2,16 +2,20 @@
 <link rel="stylesheet" type="text/css" href="{% static '/tasks/recordstable.css' %}">
 <div class="records-container">
     <h1>Historial</h1>
-    <table>
+    <table class="table-title">
         <tr class="table-row">
-            <th>Tarea</th>
-            <th>Fecha</th>
+            <td>Tarea</td>
+            <td class="date-cell">Completado en</td>
         </tr>
-        {% for record in records %}
-            <tr>
-                <td>{{record.task_text}}</td>
-                <td>{{record.completion_date}}</td>
-            </tr>
-        {% endfor %}
     </table>
+    <div class="records-list">
+        <table>
+            {% for record in records %}
+                <tr>
+                    <td>{{record.task_text}}</td>
+                    <td class="date-cell">{{record.completion_date}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 </div>
