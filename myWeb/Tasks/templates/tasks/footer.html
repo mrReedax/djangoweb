@@ -2,8 +2,12 @@
 <link rel="stylesheet" type="text/css" href="{% static 'tasks/footer.css'%}">
 <footer>
     <div>
-        <h4>Contacto</h4>
-        <div>iconos de redes sociales</div>
+        <div class="social-network-logo">
+            {% include 'social_networks/linkedin.html' with nextPage='https://www.linkedin.com/in/andres-figueredo/' %}
+            {% include 'social_networks/github.html' with nextPage='https://github.com/mrReedax' %}
+            {% include 'social_networks/twitter.html' with nextPage='https://twitter.com/MrReedax' %}
+            {% include 'social_networks/instagram.html' with nextPage='https://www.instagram.com/mr.reedax/' %}
+        </div>
     </div>
-    <div><p>© 2022 Andres Figueredo</p></div>
+    <div><p class="copyright">TasksApp &copy; 2022 Andres Figueredo</p></div>
 </footer>
