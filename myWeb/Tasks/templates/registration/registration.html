@@ -1,11 +1,29 @@
 {% include 'tasks/head.html' with title="Registro"%}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'tasks/registration.css' %}">
-<h1>Registro</h1>
-<form action="">
-    <input type="text" id="user" placeholder="Usuario">
-    <input type="password" id="password" placeholder="Contraseña">
-    <input type="password" id="passwordrep" placeholder="Repetir contraseña">
-    <input type="submit" value="Finalizar registro">
-</form>
+<div class="external-box-registration">
+    <h1>Registro</h1>
+    {% if error_message %}
+    <p class="error-message"> {{ error_message }} </p>
+    {% endif %}
+    <form class="registration-form" action="{% url 'tasks:processRegistration' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="user" placeholder="Usuario">
+        <input type="password" name="password" placeholder="Contraseña">
+        <input type="password" name="passwordrep" placeholder="Repetir contraseña">
+        <div class="captcha">
+            {% load static %}
+            <div class="input-reload">
+                <img src="{% get_static_prefix %}captcha/{{captcha_id}}.png" alt="Captcha">
+                <a style='text-decoration: none;' href="">🔃</a>
+            </div>
+            <input type="hidden" name="captcha_id" value="{{captcha_id}}">
+            <input type="text" name="captcha" placeholder="Escribe el código">
+        </div>
+        <div class="buttons-box">
+            <input class="button" type="submit" value="Finalizar registro">
+            <a class="button go-to-login-button" style="text-decoration: none;" href="{% url 'tasks:index' %}">Volver</a>
+        </div>
+    </form>
+</div>
 {% include 'tasks/footer.html' %}

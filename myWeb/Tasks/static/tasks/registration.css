@@ -2,6 +2,74 @@ body {
     background: linear-gradient(180deg, #262335, 60%,#000000);
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 2vw;
+    color: #3f3b52;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+.external-box-registration {
+    border: 0.3vw solid white;
+    border-radius: 0.5vw;
+    margin: 2vw;
+    padding: 1.5vw;
+    background-color: white;
+}
+
+form {
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.captcha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h1{
+    display: flex;
+    font-size: 2.5vw;
+    justify-content: center;
+}
+
+.error-message{
+    color: red;
+    font-size: 1.5vw;
+}
+
+input{
+    font-size: 2vw;
+    margin: 0.5vw;
+}
+.input-reload {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.buttons-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.go-to-login-button{
+    margin: 0.5vw;
+}
+
+.button {
+    color: white;
+    padding: 0.3vw 2vw;
+    background-color: #059862;
+    border: .1vw solid #cccccc;
+    border-radius: 0.5vw;
+    font-size: 1em;
+}
+.button:hover{
+    color: #059862;
+    background-color: white;
 }

@@ -14,5 +14,18 @@ footer {
 }
 
 .copyright {
+    margin: 0;
     font-size: 1.1rem;
+}
+
+
+.email {
+    font-size: 1.2vw;
+    margin: 0;
+    position: absolute;
+    right: 1vw;
+}
+.name-email {
+    margin: 0;
+    padding: 0;
 }

@@ -34,3 +34,6 @@ class Task(models.Model):
 
     def set_completion_date(self):
         self.completion_date = datetime.now()
+
+class Captcha(models.Model):
+    captcha_text = models.CharField(max_length=7)

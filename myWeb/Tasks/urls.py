@@ -9,5 +9,6 @@ urlpatterns = [
     path('home', views.home, name='home'),
     path('home/modifyTask', views.modifyTask, name='modifyTask'),
     path('records', views.records, name='records'),
-    path('logout', views.logout, name='logout')
+    path('logout', views.logout, name='logout'),
+    path('processregistration', views.processRegistration, name='processRegistration')
     ]

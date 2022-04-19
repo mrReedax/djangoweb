@@ -17,11 +17,7 @@ body {
     position: absolute;
     left: 1.5vw;
     top: 0vh;
-    background: -webkit-linear-gradient(#1649b0, #8719b0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
+    color: white;
 }
 
 .main-login-container {
