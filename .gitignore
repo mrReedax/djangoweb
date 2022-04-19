@@ -1,3 +1,5 @@
 venv/
 myWeb/tasks/__pycache__/
 /myWeb/myWeb/__pycache__/
+/myWeb/db.sqlite3
+/myWeb/tasks/static/captcha/*.png
